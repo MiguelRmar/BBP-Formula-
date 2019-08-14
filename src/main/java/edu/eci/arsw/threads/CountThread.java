@@ -10,10 +10,13 @@ package edu.eci.arsw.threads;
  * @author hcadavid
  */
 public class CountThread extends Thread {
-        
+    //Crea las variables para el interbalo a ejecutar  
     int numInt = 0;
     int numFin = 0; 
-    
+    /**
+    * @param numa Número inicial del rango.
+    * @param numb Número final del rango.
+    */
     public CountThread(int numa, int numb){
         numInt = numa;
         numFin = numb;

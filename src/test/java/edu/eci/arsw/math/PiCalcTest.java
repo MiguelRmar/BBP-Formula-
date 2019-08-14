@@ -24,6 +24,8 @@ public class PiCalcTest {
 
     @Test
     public void piGenTest() throws Exception {
+        
+        int n = 5;
 
         byte[] expected = new byte[]{
             0x2, 0x4, 0x3, 0xF, 0x6, 0xA, 0x8, 0x8,
@@ -39,7 +41,7 @@ public class PiCalcTest {
 
         for (int start = 0; start < expected.length; start++) {
             for (int count = 0; count < expected.length - start; count++) {
-                byte[] digits = PiDigits.getDigits(start, count);
+                byte[] digits = PiDigits.getDigits(start, count,n);
                 assertEquals(count, digits.length);
 
                 for (int i = 0; i < digits.length; i++) {

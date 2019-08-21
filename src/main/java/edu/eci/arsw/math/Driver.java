@@ -14,9 +14,10 @@ import java.util.List;
  */
 public class Driver {
     
-     public static String getDigits(int start, int count,int N) throws InterruptedException {
+     public static byte[] getDigits(int start, int count,int N) throws InterruptedException {
         int partes= count/N;
-        String resultado = "";
+        int l = 0;
+        byte[] resultado = new byte[count];
         List<PiDigits> hilos = new ArrayList<PiDigits>();
         //Hilo[] hilos=new Hilo[partes];
         for (int i = 0; i < N; i++) {  
@@ -31,7 +32,13 @@ public class Driver {
             hilos.get(u).join();
         }
         for (int u=0; u<hilos.size(); u++){       ;
-            resultado=resultado+hilos.get(u).getResultado();
+            if (u == 0){
+                l = 0;
+            }
+            else{
+                l += hilos.get(u-1).getResultado().length;
+            }
+            System.arraycopy(hilos.get(u).getResultado(), 0, resultado, l, hilos.get(u).getResultado().length);
         }
        
        
